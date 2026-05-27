@@ -1,7 +1,7 @@
 -- Blueprint Hub UI Loader
 
 local gui = Instance.new("ScreenGui")
-gui.Name = "ColtenHub"
+gui.Name = "JeymzHUB"
 pcall(function()
 	gui.Parent = game.CoreGui
 end)
