@@ -14,41 +14,36 @@ main.BorderSizePixel = 0
 
 local title = Instance.new("TextButton", main)
 title.Size = UDim2.new(1,0,1,0)
-title.Text = "Library | Blueprint Hub"
-title.TextColor3 = Color3.new(1,1,1)
-title.BackgroundTransparency = 1
-title.Font = Enum.Font.SourceSansBold
-title.TextSize = 18
-
+title.Text = "Library | Jeyemz Hub"
 local UIS = game:GetService("UserInputService")
 
 local dragging = false
-local dragInput = nil
-local dragStart = nil
-local startPos = nil
+local dragStart
+local startPos
 
-main.Active = true
+title.Active = true
 
-main.InputBegan:Connect(function(input)
+title.InputBegan:Connect(function(input)
 	if input.UserInputType == Enum.UserInputType.Touch
 	or input.UserInputType == Enum.UserInputType.MouseButton1 then
-
 		dragging = true
-		dragInput = input
 		dragStart = input.Position
 		startPos = main.Position
 	end
 end)
 
-main.InputEnded:Connect(function(input)
-	if input == dragInput then
+title.InputEnded:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.Touch
+	or input.UserInputType == Enum.UserInputType.MouseButton1 then
 		dragging = false
-		dragInput = nil
 	end
 end)
 
 UIS.InputChanged:Connect(function(input)
-	if dragging and input == dragInput then
+	if dragging and (
+		input.UserInputType == Enum.UserInputType.Touch or
+		input.UserInputType == Enum.UserInputType.MouseMovement
+	) then
 		local delta = input.Position - dragStart
 
 		main.Position = UDim2.new(
@@ -59,6 +54,10 @@ UIS.InputChanged:Connect(function(input)
 		)
 	end
 end)
+title.TextColor3 = Color3.new(1,1,1)
+title.BackgroundTransparency = 1
+title.Font = Enum.Font.SourceSansBold
+title.TextSize = 18
 
 -- menu
 local menu = Instance.new("Frame", main)
