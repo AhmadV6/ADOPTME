@@ -12,6 +12,14 @@ main.Position = UDim2.new(0.4,0,0.3,0)
 main.BackgroundColor3 = Color3.fromRGB(30,30,30)
 main.BorderSizePixel = 0
 
+local title = Instance.new("TextButton", main)
+title.Size = UDim2.new(1,0,1,0)
+title.Text = "Library | Blueprint Hub"
+title.TextColor3 = Color3.new(1,1,1)
+title.BackgroundTransparency = 1
+title.Font = Enum.Font.SourceSansBold
+title.TextSize = 18
+
 local UIS = game:GetService("UserInputService")
 
 local dragging = false
@@ -53,14 +61,6 @@ UIS.InputChanged:Connect(function(input)
 		)
 	end
 end)
-
-local title = Instance.new("TextButton", main)
-title.Size = UDim2.new(1,0,1,0)
-title.Text = "Library | Blueprint Hub"
-title.TextColor3 = Color3.new(1,1,1)
-title.BackgroundTransparency = 1
-title.Font = Enum.Font.SourceSansBold
-title.TextSize = 18
 
 -- menu
 local menu = Instance.new("Frame", main)
